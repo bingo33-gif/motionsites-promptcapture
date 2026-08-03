@@ -2,16 +2,22 @@
 
 [![Validate skill](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml/badge.svg)](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml)
 
-A Codex skill that finds matching prompt templates on [motionsites.ai](https://motionsites.ai) when you ask for a website / UI design, then delivers the prompt plus an optimization plan adapted to your tech stack.
+Find the right [motionsites.ai](https://motionsites.ai) prompt for your next website and get an actionable optimization plan — without leaving your coding agent.
 
-> 中文版说明见 [README.zh-CN.md](README.zh-CN.md).
+`motionsites-promptcapture` is a Codex skill (Agent Skills format) that turns a simple request like *"I need a website with great UI design"* into:
 
-## Features
+1. the best-matching prompt from MotionSites,
+2. a clear rationale for that pick, and
+3. a step-by-step plan for adapting it to your tech stack.
 
-- Extracts your requirements (site type, visual style, animations, tech stack)
-- Browses motionsites.ai to find matching prompts (SaaS, Agency, Portfolio, landing pages, hero sections, and more)
-- Shows the original prompt verbatim with a matching rationale
-- Provides an optimization plan: tech-stack adaptation, animation implementation (GSAP ScrollTrigger + Lenis), visual assets, and browser verification
+> 中文说明见 [README.zh-CN.md](README.zh-CN.md).
+
+## What it does
+
+- **Understands your request** — site type (SaaS, agency, portfolio, landing page, hero section…), visual style, animation needs, and tech stack.
+- **Finds the right prompt** — browses motionsites.ai by category and style, then selects the 1–3 most relevant templates.
+- **Shows the original prompt verbatim** — never rewritten or fabricated, with a note on why it fits.
+- **Plans the implementation** — tech-stack migration (default: React + Tailwind + shadcn/ui), animation guidance (GSAP ScrollTrigger + Lenis), visual assets, and browser-based verification.
 
 ## Installation
 
@@ -27,19 +33,19 @@ cp -r motionsites-promptcapture ~/.codex/skills/
 
 Restart Codex (or open a new task) and the skill will be available.
 
-## Trigger examples
+## Usage
 
-- "I need you to create a website and use UI design"
-- "I want to build a SaaS landing page, find a prompt from MotionSites for me"
-- "Create a portfolio site with an animated hero section and give me a plan first"
+Ask for a website that involves UI design — for example:
 
-## How it works
+- "I need you to create a website and use UI design."
+- "I want to build a SaaS landing page; find a MotionSites prompt for me."
+- "Create a portfolio site with an animated hero section and give me a plan first."
 
-This skill is responsible for "find prompt + deliver optimization plan" only. It does not start implementing until you confirm. Original prompts are preserved verbatim and never fabricated.
+The skill returns the recommended prompt plus an optimization plan. It only starts implementing after you confirm.
 
 ## Contributing
 
-This repository includes a GitHub Actions workflow ([`.github/workflows/validate-skill.yml`](.github/workflows/validate-skill.yml)) that validates `SKILL.md` and the agent metadata on every push and pull request. Run the same check locally with:
+A GitHub Actions workflow (`.github/workflows/validate-skill.yml`) validates `SKILL.md` and `agents/openai.yaml` on every push and pull request. Run the same check locally:
 
 ```bash
 pip install pyyaml
