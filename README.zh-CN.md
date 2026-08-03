@@ -1,5 +1,7 @@
 # motionsites-promptcapture
 
+[![Validate skill](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml/badge.svg)](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml)
+
 Codex skill：当用户提出网站 / UI 设计需求时，自动前往 [motionsites.ai](https://motionsites.ai) 查找匹配的提示词模板，并输出「推荐 prompt + 针对用户技术栈的优化方案」。
 
 > 英文版说明见 [README.md](README.md)。
