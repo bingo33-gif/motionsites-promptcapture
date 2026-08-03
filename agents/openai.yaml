@@ -1,0 +1,4 @@
+interface:
+  display_name: "MotionSites Prompt Capture"
+  short_description: "从 motionsites.ai 找到匹配的网页提示词并给出针对项目的优化方案"
+  default_prompt: "创建一个网站，需要 UI 设计，请从 motionsites.ai 找合适的 prompt 并给我优化方案"
