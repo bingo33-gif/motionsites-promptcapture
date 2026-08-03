@@ -1,47 +1,108 @@
+<div align="center">
+
 # motionsites-promptcapture
 
+> “Don't start from a blank prompt. Let MotionSites show you the design language — then make it yours.”
+
+[![Codex](https://img.shields.io/badge/Codex-Skill-111111)](#)
+[![Agent Skills](https://img.shields.io/badge/Agent%20Skills-Compatible-6B7280)](#)
+[![License](https://img.shields.io/badge/License-MIT-F7C948)](#)
 [![Validate skill](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml/badge.svg)](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml)
 
-Find the right [motionsites.ai](https://motionsites.ai) prompt for your next website and get an actionable optimization plan — without leaving your coding agent.
+A Codex skill that turns *“I need a website with great UI design”* into a curated MotionSites prompt and a concrete implementation plan.
 
-`motionsites-promptcapture` is a Codex skill (Agent Skills format) that turns a simple request like *"I need a website with great UI design"* into:
+Stuck on the visual direction for your landing page, SaaS site, or portfolio?  
+Copying generic AI prompts and getting generic results?  
+Wondering how to turn a beautiful animated-site prompt into something that fits your stack?
 
-1. the best-matching prompt from MotionSites,
-2. a clear rationale for that pick, and
-3. a step-by-step plan for adapting it to your tech stack.
+This skill goes to [motionsites.ai](https://motionsites.ai), finds the prompt that actually matches your request, explains why it fits, and gives you a plan to adapt it to your project.
 
-> 中文说明见 [README.zh-CN.md](README.zh-CN.md).
+[Install](#installation) · [Quick start](#quick-start) · [Workflow](#recommended-workflow) · [Capabilities](#current-capabilities) · [Companion skills](#recommended-companion-skills) · [Directory](#directory-structure) · [Principles](#design-principles) · [Limitations](#current-limitations) · [Compatibility](#compatibility) · [中文版](./README.zh-CN.md)
 
-## What it does
-
-- **Understands your request** — site type (SaaS, agency, portfolio, landing page, hero section…), visual style, animation needs, and tech stack.
-- **Finds the right prompt** — browses motionsites.ai by category and style, then selects the 1–3 most relevant templates.
-- **Shows the original prompt verbatim** — never rewritten or fabricated, with a note on why it fits.
-- **Plans the implementation** — tech-stack migration (default: React + Tailwind + shadcn/ui), animation guidance (GSAP ScrollTrigger + Lenis), visual assets, and browser-based verification.
+</div>
 
 ## Installation
 
-Copy the `motionsites-promptcapture` folder into your Codex skills directory:
+### Method 1: Codex skill-installer
 
-```bash
-# Windows
-Copy-Item -Recurse .\motionsites-promptcapture "$env:USERPROFILE\.codex\skills\"
-
-# macOS / Linux
-cp -r motionsites-promptcapture ~/.codex/skills/
+```powershell
+python "${HOME}\.codex\skills\.system\skill-installer\scripts\install-skill-from-github.py" --repo bingo33-gif/motionsites-promptcapture --path . --name motionsites-promptcapture
 ```
 
-Restart Codex (or open a new task) and the skill will be available.
+### Method 2: Clone into your skills directory
 
-## Usage
+```powershell
+git clone https://github.com/bingo33-gif/motionsites-promptcapture.git "${HOME}\.codex\skills\motionsites-promptcapture"
+```
 
-Ask for a website that involves UI design — for example:
+Restart Codex (or open a new task) and the skill will be discovered automatically. More details in [INSTALL.md](./INSTALL.md).
 
-- "I need you to create a website and use UI design."
-- "I want to build a SaaS landing page; find a MotionSites prompt for me."
-- "Create a portfolio site with an animated hero section and give me a plan first."
+## Quick start
 
-The skill returns the recommended prompt plus an optimization plan. It only starts implementing after you confirm.
+1. Copy this repository link to Codex and let it install the skill for you.
+2. Open your project folder in Codex.
+3. Say: *“I need you to create a website and use UI design.”*
+4. Tell Codex the site type, visual style, and tech stack (or let it ask); the skill will find the matching prompt and present an optimization plan.
+
+The skill only starts implementing after you confirm the plan.
+
+## Recommended companion skills
+
+- `figma` (plugin) — pull design context from Figma when you already have a design file
+- `frontend-app-builder` (Build Web Apps plugin) — implement the approved plan with high-quality UI
+- `playwright` / `frontend-testing-debugging` — verify animations, responsiveness, and console errors in a real browser
+
+## Current capabilities
+
+- Requirement extraction: site type, visual style, animation needs, tech stack
+- MotionSites prompt discovery: category + style + motion matching
+- Verbatim prompt output with a matching rationale
+- Optimization plan: stack migration, animation guidance (GSAP ScrollTrigger + Lenis), visual assets, browser verification
+
+## Recommended workflow
+
+1. Clarify the request.
+2. Browse motionsites.ai and select 1–3 matching prompts.
+3. Present the prompt(s) with a rationale.
+4. Deliver the optimization plan.
+5. Implement only after user confirmation.
+6. Verify the result with browser testing.
+
+## Directory structure
+
+```text
+motionsites-promptcapture/
+├── SKILL.md
+├── INSTALL.md
+├── README.md
+├── README.zh-CN.md
+├── LICENSE
+├── agents/
+│   └── openai.yaml
+└── .github/
+    ├── scripts/
+    │   └── quick_validate.py
+    └── workflows/
+        └── validate-skill.yml
+```
+
+## Design principles
+
+1. Never fabricate a prompt — only show what actually exists on motionsites.ai.
+2. Keep the original prompt verbatim; optimize the plan, not the source text.
+3. Match the prompt to the user's real stack and constraints.
+4. Recommend browser verification before calling a UI done.
+
+## Current limitations
+
+- motionsites.ai is a JavaScript-rendered site; browsing it may require the in-app browser.
+- The skill reads the live site on each use rather than relying on cached content, so prompts can change as the site evolves.
+- The skill delivers prompts + plans; it does not generate sites by itself.
+
+## Compatibility
+
+- Codex: native support.
+- Other Agent Skills-compatible clients (Claude Code, Cursor, etc.): the `SKILL.md` + `agents/` structure is portable.
 
 ## Contributing
 
