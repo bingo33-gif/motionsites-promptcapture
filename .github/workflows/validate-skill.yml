@@ -1,0 +1,34 @@
+name: Validate skill
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "SKILL.md"
+      - "agents/**"
+      - ".github/**"
+  pull_request:
+    paths:
+      - "SKILL.md"
+      - "agents/**"
+      - ".github/**"
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install --quiet pyyaml
+
+      - name: Validate SKILL.md
+        run: python .github/scripts/quick_validate.py .
+
+      - name: Validate agents metadata YAML
+        run: python -c "import yaml; yaml.safe_load(open('agents/openai.yaml', encoding='utf-8')); print('agents/openai.yaml OK')"
