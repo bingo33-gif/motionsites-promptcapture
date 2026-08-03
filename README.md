@@ -1,5 +1,7 @@
 # motionsites-promptcapture
 
+[![Validate skill](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml/badge.svg)](https://github.com/bingo33-gif/motionsites-promptcapture/actions/workflows/validate-skill.yml)
+
 A Codex skill that finds matching prompt templates on [motionsites.ai](https://motionsites.ai) when you ask for a website / UI design, then delivers the prompt plus an optimization plan adapted to your tech stack.
 
 > 中文版说明见 [README.zh-CN.md](README.zh-CN.md).
